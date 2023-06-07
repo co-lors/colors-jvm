@@ -15,12 +15,6 @@ lazy val root = (project in file("."))
       if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
       else Some("releases" at nexus + "service/local/staging/deploy/maven2")
     },
-    Compile / packageBin / packageOptions += {
-      import java.util.jar.{Attributes, Manifest}
-      val manifest = new Manifest
-      manifest.getMainAttributes.put(new Attributes.Name("Automatic-Module-Name"), "co.lors")
-      Package.JarManifest(manifest)
-    },
     pomIncludeRepository := { _ => false },
     pomExtra             :=
       <scm>
