@@ -1,6 +1,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/co.lors/colors.svg?style=for-the-badge)](https://search.maven.org/#search|gav|1|g%3A%22co.lors%22%20AND%20a%3A%22colors%22)
 [![API documentation](http://javadoc.io/badge/co.lors/colors.svg?style=for-the-badge)](http://javadoc.io/doc/co.lors/colors)
 ![work in progress](https://img.shields.io/badge/status-work_in_progress-brightgreen.svg?style=for-the-badge)
+[![GitHub Actions status](https://img.shields.io/github/actions/workflow/status/co-lors/colors-jvm/test.yml?branch=main&style=for-the-badge)](https://github.com/co-lors/colors-jvm/actions/workflows/test.yml)
 
 # Colors
 
