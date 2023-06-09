@@ -93,6 +93,30 @@ public record RgbColor(int value) implements Color {
     return "rgb(" + red() + ", " + green() + ", " + blue() + ", " + df.format(alphaScaled()) + ")";
   }
 
+  public OklabColor toOklab() {
+    double r = gammaInv(red() / 255.0);
+    double g = gammaInv(green() / 255.0);
+    double b = gammaInv(blue() / 255.0);
+
+    double l3 = 0.4121656120 * r + 0.5362752080 * g + 0.0514575653 * b;
+    double m3 = 0.2118591070 * r + 0.6807189584 * g + 0.1074065790 * b;
+    double s3 = 0.0883097947 * r + 0.2818474174 * g + 0.6302613616 * b;
+
+    double l = Math.cbrt(l3);
+    double m = Math.cbrt(m3);
+    double s = Math.cbrt(s3);
+
+    return new OklabColor(
+        (float) (0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s),
+        (float) (1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s),
+        (float) (0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s),
+        (float) alphaScaled());
+  }
+
+  private static double gammaInv(double r) {
+    return (r > 0.04045) ? Math.pow((r + 0.055) / 1.055, 2.4) : (r / 12.92);
+  }
+
   public int red() {
     return (value >> 24) & 0xFF;
   }
