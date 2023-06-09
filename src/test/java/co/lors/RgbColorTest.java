@@ -163,6 +163,46 @@ public class RgbColorTest {
 
   @Test
   public void fromCss() {
+    assertEquals(RgbColor.BLACK, RgbColor.fromCss("rgb(0 0 0 1.0)"));
+    assertEquals(RgbColor.WHITE, RgbColor.fromCss("rgb(255 255, 255 1.0)"));
+    assertEquals(RgbColor.RED, RgbColor.fromCss("rgb(255 0 0 1.0)"));
+    assertEquals(RgbColor.GREEN, RgbColor.fromCss("rgb(0 255 0 1.0)"));
+    assertEquals(RgbColor.BLUE, RgbColor.fromCss("rgb(0 0 255 1.0)"));
+
+    assertEquals(RgbColor.of(0, 0, 0, 0), RgbColor.fromCss("rgb(0 0 0 0.0)"));
+    assertEquals(RgbColor.of(0, 0, 0, 1), RgbColor.fromCss("rgb(0 0 0 0.004)"));
+    assertEquals(RgbColor.of(0, 0, 0, 2), RgbColor.fromCss("rgb(0 0 0 0.008)"));
+    assertEquals(RgbColor.of(0, 0, 0, 11), RgbColor.fromCss("rgb(0 0 0 0.043)"));
+    assertEquals(RgbColor.of(0, 0, 0, 23), RgbColor.fromCss("rgb(0 0 0 0.09)"));
+    assertEquals(RgbColor.of(0, 0, 0, 42), RgbColor.fromCss("rgb(0 0 0 0.165)"));
+    assertEquals(RgbColor.of(0, 0, 0, 59), RgbColor.fromCss("rgb(0 0 0 0.231)"));
+    assertEquals(RgbColor.of(0, 0, 0, 113), RgbColor.fromCss("rgb(0 0 0 0.443)"));
+    assertEquals(RgbColor.of(0, 0, 0, 127), RgbColor.fromCss("rgb(0 0 0 0.498)"));
+    assertEquals(RgbColor.of(0, 0, 0, 128), RgbColor.fromCss("rgb(0 0 0 0.502)"));
+    assertEquals(RgbColor.of(0, 0, 0, 129), RgbColor.fromCss("rgb(0 0 0 0.506)"));
+    assertEquals(RgbColor.of(0, 0, 0, 253), RgbColor.fromCss("rgb(0 0 0 0.992)"));
+    assertEquals(RgbColor.of(0, 0, 0, 254), RgbColor.fromCss("rgb(0 0 0 0.996)"));
+    assertEquals(RgbColor.of(0, 0, 0, 255), RgbColor.fromCss("rgb(0 0 0 1.0)"));
+
+    // values without rounding to max 3 fractional digits
+    assertEquals(RgbColor.of(0, 0, 0, 0), RgbColor.fromCss("rgb(0 0 0 0.0)"));
+    assertEquals(RgbColor.of(0, 0, 0, 1), RgbColor.fromCss("rgb(0 0 0 0.00392156862745098)"));
+    assertEquals(RgbColor.of(0, 0, 0, 2), RgbColor.fromCss("rgb(0 0 0 0.00784313725490196)"));
+    assertEquals(RgbColor.of(0, 0, 0, 11), RgbColor.fromCss("rgb(0 0 0 0.043137254901960784)"));
+    assertEquals(RgbColor.of(0, 0, 0, 23), RgbColor.fromCss("rgb(0 0 0 0.09019607843137255)"));
+    assertEquals(RgbColor.of(0, 0, 0, 42), RgbColor.fromCss("rgb(0 0 0 0.16470588235294117)"));
+    assertEquals(RgbColor.of(0, 0, 0, 59), RgbColor.fromCss("rgb(0 0 0 0.23137254901960785)"));
+    assertEquals(RgbColor.of(0, 0, 0, 113), RgbColor.fromCss("rgb(0 0 0 0.44313725490196076)"));
+    assertEquals(RgbColor.of(0, 0, 0, 127), RgbColor.fromCss("rgb(0 0 0 0.4980392156862745)"));
+    assertEquals(RgbColor.of(0, 0, 0, 128), RgbColor.fromCss("rgb(0 0 0 0.5019607843137255)"));
+    assertEquals(RgbColor.of(0, 0, 0, 129), RgbColor.fromCss("rgb(0 0 0 0.5058823529411764)"));
+    assertEquals(RgbColor.of(0, 0, 0, 253), RgbColor.fromCss("rgb(0 0 0 0.9921568627450981)"));
+    assertEquals(RgbColor.of(0, 0, 0, 254), RgbColor.fromCss("rgb(0 0 0 0.996078431372549)"));
+    assertEquals(RgbColor.of(0, 0, 0, 255), RgbColor.fromCss("rgb(0 0 0 1.0)"));
+  }
+
+  @Test
+  public void fromCssLegacyCommaSyntax() {
     assertEquals(RgbColor.BLACK, RgbColor.fromCss("rgb(0, 0, 0, 1.0)"));
     assertEquals(RgbColor.WHITE, RgbColor.fromCss("rgb(255, 255, 255, 1.0)"));
     assertEquals(RgbColor.RED, RgbColor.fromCss("rgb(255, 0, 0, 1.0)"));
