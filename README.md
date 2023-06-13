@@ -24,17 +24,17 @@ Add the library as a dependency to your project:
 <dependency>
   <groupId>co.lors</groupId>
   <artifactId>colors</artifactId>
-  <version>0.1</version>
+  <version>0.2</version>
 </dependency>
 ```
 ##### Gradle
 ```groovy
-compile 'co.lors:colors:0.1'
+compile 'co.lors:colors:0.2'
 ```
 
 ##### SBT
 ```scala
-"co.lors" % "colors" % "0.1"
+"co.lors" % "colors" % "0.2"
 ```
 
 #### Example
