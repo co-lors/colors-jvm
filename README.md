@@ -13,6 +13,11 @@ A tiny library that provides data types and conversions for modern and popular c
 
 This library is written in Java, and runs on the JVM (≥ 17).
 
+## Status
+
+- RGB: done
+- Oklab: in progress, see [topic/oklab](https://github.com/co-lors/colors-jvm/tree/topic/oklab)
+
 ## Usage
 
 #### Dependency
